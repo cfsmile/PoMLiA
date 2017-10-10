@@ -146,6 +146,11 @@ def datingClassTest():
     #  总错误数 / 总测试集记录条数， 即为错误率。
     print("The total error rate is: %f" % (errorCount/float(numTestVecs)))
 
+def main():
+    datingClassTest()
+    
+if __name__ == "__main__":
+    main()
 
 #  ============================================================================
 #  After reading this knn code, I came up with the idea that maybe something
