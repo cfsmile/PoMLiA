@@ -129,7 +129,7 @@ def datingClassTest():
     numTestVecs = int(m * hoRatio)
     #  置错误数初值为0.0
     errorCount = 0.0
-
+    
     #  对每一条测试数据。本例中i取值从0:99
     for i in range(numTestVecs):
         #  比对每一条数据与所有(numTestVecs:m,本例100:1000)训练集记录的knn距离
@@ -137,13 +137,18 @@ def datingClassTest():
         classifierResult = classify0(nm[i,:], nm[numTestVecs:m,:], \
                                      dl[numTestVecs:m], 3)
         #  比较计算的分类标签与真实的分类标签。
-        print("the classifier came back with: %d, the real answer is: %d" \
-              % (classifierResult, dl[i]))
+        if (classifierResult != dl[i]):
+            #  不一致，分类错误，错误计数增1。
+            errorCount += 1.0
+            #  并格式化输出
+            print(" TestExample #%d : the label is misclassified as : [%d], the real answer is: [%d]" \
+                  % (i, classifierResult, dl[i]))
+        else:
+            #  一致，分类正确，格式化输出
+            print("Test Example #%d : the classifier came back with: %d, the real answer is: %d" \
+              % (i, classifierResult, dl[i]))
 
-        #  不一致，即计算错误，错误数增1。
-        if (classifierResult != dl[i]): errorCount += 1.0
-
-    #  总错误数 / 总测试集记录条数， 即为错误率。
+    #  总错误计数 / 总测试集记录条数， 即为错误率。
     print("The total error rate is: %f" % (errorCount/float(numTestVecs)))
 
 def main():
