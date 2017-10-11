@@ -29,9 +29,9 @@ def classify0(intX, dataSet, labels, k):
     distances = sqDistances ** 0.5
     #  Sort and return the index value of the sorted elements.
     #  For example, distances = [1.487, 1.414, 0, 0.1]
-    #  sortedDistIndicies := [2, 3, 1, 0] whose elements' values
+    #  sortedDistIndicies := [2, 3, 0, 1] whose elements' values
     #  are indexes of the distances elements.
-    #  d2     d3     d1 d0
+    #  d2     d3     d0 d1
     #  1.487  1.414  0  0.1
     sortedDistIndicies = distances.argsort()
     #  A dict
